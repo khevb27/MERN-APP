@@ -20,18 +20,17 @@ const userSchema = new Schema({
     minlength: 8,
   },
 });
-//need to change 
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
-    const round = 10;
-    this.password = await bcrypt.hash(this.password, round);
+// synchronous hashing; avoids hashing the password if it hasn't been modified
+userSchema.pre('save', function (next) {
+  if (this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = bcrypt.hashSync(this.password, saltRounds);
   }
-
   next();
 });
-
-userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+// synchronus password comparison
+userSchema.methods.isCorrectPassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 const User = model('User', userSchema);
