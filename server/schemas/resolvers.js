@@ -10,7 +10,6 @@ const resolvers = {
       user: async (parent, { username }) => {
         return User.findOne({ username }).populate('thoughts');
       },
-
       me: async (parent, context) => {
         if (context.user) {
           return User.findOne({ _id: context.user._id }).populate('thoughts');
@@ -18,7 +17,6 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       },
     },
-  
     Mutation: {
       addUser: async (parent, { username, email, password }) => {
         const user = await User.create({ username, email, password });
