@@ -19,6 +19,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
+  thoughts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Thought',
+    },
+  ],
 });
 // synchronous hashing; avoids hashing the password if it hasn't been modified
 userSchema.pre('save', function (next) {
