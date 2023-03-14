@@ -14,12 +14,14 @@ code {
 
 /* Homepage */
 body {
-  display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
 .navbar-nav {
   display: inline-block;
+}
+
+.AlignCenter{
+  align-items: center;
 }
