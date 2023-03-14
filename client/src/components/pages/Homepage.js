@@ -10,7 +10,7 @@ function HomePage() {
       </header>
       <Navbar bg="dark" expand="lg" className="justify-content-center"> {/* Make the navbar inline */}
         <Container>
-          <Navbar.Brand href="#">Home</Navbar.Brand>
+          <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="navbar-nav">
