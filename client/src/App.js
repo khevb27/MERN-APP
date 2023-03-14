@@ -1,11 +1,13 @@
 import HomePage from './components/pages/Homepage';
 
+import { Route , Routes } from 'react-router-dom';
 function App() {
   return (
-    <div>
-      <HomePage />
-    </div>
-  );
+      <div className='m-3'>
+        <Routes>
+          <Route path='/' element={<HomePage/>} />
+        </Routes>
+      </div>
+    );
 }
-
 export default App;
