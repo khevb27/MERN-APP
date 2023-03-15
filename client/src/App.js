@@ -9,10 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import HomePage from './components/pages/Homepage';
-import Login from './components/pages/login';
-import SignUp from './components/pages/signup'; 
-import Nav from './components/Nav';
+import HomePage from './pages/Homepage';
+import Login from './pages/login';
+import SignUp from './pages/signup'; 
+import Nav from './pages/Nav';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
