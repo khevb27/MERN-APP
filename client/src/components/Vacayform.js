@@ -18,8 +18,7 @@ function VacayForm() {
         const { data } = await addThought({
           variables:
           { location: location, departure: departure },
-          
-        });
+        });window.location.reload(false);
     } catch (e) {
       alert("Invalid Entry");
       console.error(e);

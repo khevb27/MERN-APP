@@ -29,6 +29,7 @@ const typeDefs = gql`
     addThought(location: String!, departure: String!): Thought
     addUser(username: String!, email: String!, password: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
+    removeThought(thoughtId: ID!): Thought
   }
 `;
 
