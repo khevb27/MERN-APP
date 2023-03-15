@@ -10,6 +10,18 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_THOUGHT = gql`
+mutation Mutation($location: String!, $departure: String!) {
+  addThought(location: $location, departure: $departure) {
+    _id
+    location
+    departure
+  }
+}
+`;
+
+
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {

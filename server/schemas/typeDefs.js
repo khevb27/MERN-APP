@@ -10,9 +10,8 @@ const typeDefs = gql`
 
   type Thought {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
+    location: String
+    departure: String
   }
 
   type AuthPayload {
@@ -24,8 +23,10 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     me: User
+    thoughts: [Thought]
   }
   type Mutation {
+    addThought(location: String!, departure: String!): Thought
     addUser(username: String!, email: String!, password: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
   }

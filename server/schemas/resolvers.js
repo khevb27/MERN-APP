@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User , Thought } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -10,6 +10,9 @@ const resolvers = {
       user: async (parent, { username }) => {
         return User.findOne({ username }).populate('thoughts');
       },
+      thoughts: async (parents, { username }) => {
+        return Thought.find({})
+      },
       me: async (parent, context) => {
         if (context.user) {
           return User.findOne({ _id: context.user._id }).populate('thoughts');
@@ -18,6 +21,12 @@ const resolvers = {
       },
     },
     Mutation: {
+      addThought: async (parent, { location , departure}, context) => {
+        const thought = await Thought.create({ location, departure})
+        console.log( thought)
+        const user = await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
+        return thought; 
+      },
       addUser: async (parent, { username, email, password }) => {
         const user = await User.create({ username, email, password });
         const token = signToken(user);
