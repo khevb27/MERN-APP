@@ -7,7 +7,6 @@ import { GET_USER_DATA } from '../utils/mutations';
 
 function vacayCard(data) {
     const [user, { error, data }] = useQuery(GET_USER_DATA);
-    const { data } = await user({})
     
     return (
         data.projects.map(projectItem => (

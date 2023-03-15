@@ -33,8 +33,8 @@ function VacayForm() {
         <Form.Control type="text" placeholder="Enter Dream Vacation Spot" value={location}  onChange={(e) => setLocation(e.target.value)} size="lg"/>
     </Form.Group>
     <Form.Group className="mb-3">
-        <Form.Label>Date</Form.Label>
-        <Form.Control type="text" placeholder="Enter Days to " value={departure} onChange={(e) => setDeparture(e.target.value)}/>
+        <Form.Label><h2>Date</h2></Form.Label>
+        <Form.Control type="date" placeholder="Enter Days to " value={departure} onChange={(e) => setDeparture(e.target.value)}  size="lg"/>
     </Form.Group>
     <Button variant="primary" type="submit" size="lg" style={{ width: '100%' }}>
         Submit
