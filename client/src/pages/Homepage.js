@@ -17,9 +17,9 @@ function HomePage() {
   return (
     <>
       <div className="text-center"> {/* Center the header */}
-        <h1>Welcome to My Trips App!</h1>
-        <Button className="m-3" href="/login">Login</Button>
-        <Button className="m-3" href="/signup">Signup</Button>
+        <h1 className= "mt-4 mb-3">Welcome to My Trips App!</h1>
+        <Button className="m-2" href="/login" size="lg" style={{ width: "10%"}}>Login</Button>
+        <Button className="m-2" href="/signup" size="lg" style={{ width: "10%"}}>Signup</Button>
       </div>
     </>
   );

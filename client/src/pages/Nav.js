@@ -10,7 +10,7 @@ function NavBar() {
   };
   if (Auth.loggedIn()) {
     return (
-      <Navbar bg="success" expand="lg" className="justify-content-center"> {/* Make the navbar inline */}
+      <Navbar bg="success" expand="lg" className="justify-content-center" style={{ width: "100%", fontSize: "20px" }}> {/* Make the navbar inline */}
       <Container>
       <Navbar.Brand href="/">Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -24,7 +24,7 @@ function NavBar() {
     )}
   else{
     return (
-      <Navbar bg="success" expand="lg" className="justify-content-center"> {/* Make the navbar inline */}
+      <Navbar bg="success" expand="lg" className="justify-content-center" style={{ width: "100%", fontSize: "20px" }}> {/* Make the navbar inline */}
       <Container>
         <Navbar.Brand href="/">Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
