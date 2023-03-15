@@ -21,8 +21,10 @@ const resolvers = {
       },
     },
     Mutation: {
-      addThought: async (parent, { location , departure}) => {
+      addThought: async (parent, { location , departure}, context) => {
         const thought = await Thought.create({ location, departure})
+        console.log( thought)
+        const user = await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
         return thought; 
       },
       addUser: async (parent, { username, email, password }) => {
