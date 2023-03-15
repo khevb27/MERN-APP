@@ -2,12 +2,13 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import '../index.css'; // Import the CSS file for styling
 import Auth from '../utils/auth';
+import Vacay from '../components/Vacayform';
 function HomePage() {
   if (Auth.loggedIn()) {
     return (
       <>
         <div className="text-center"> {/* Center the header */}
-          <h1>YOU HAVE A TOKEN</h1>
+          <Vacay />
         </div>
       </>
     );
