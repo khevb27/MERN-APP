@@ -34,7 +34,7 @@ function VacayForm() {
     </Form.Group>
     <Form.Group className="mb-3">
         <Form.Label>Date</Form.Label>
-        <Form.Control type="text" placeholder="Enter Days to " value={departure} onChange={(e) => setDeparture(e.target.value)}/>
+        <Form.Control type="date" placeholder="Enter Day of Vacation" value={departure} onChange={(e) => setDeparture(e.target.value)}/>
     </Form.Group>
     <Button variant="primary" type="submit">
         Submit
