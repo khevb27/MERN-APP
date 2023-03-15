@@ -29,19 +29,19 @@ function BasicExample() {
   };
 
 return (
-    <Form className="col-8 mx-auto m-3" onSubmit={handleSignupSubmit}>
-        <h1>Login</h1>
+    <Form className="login col-12 mx-auto m-3" onSubmit={handleSignupSubmit}>
+        <h1 className="title">Login</h1>
       <Form.Group className="mb-3" controlId="formBasicEmail" >
-        <Form.Label>Email address</Form.Label>
+        <Form.Label><h4>Email</h4></Form.Label>
         <Form.Control type="email" placeholder="Enter Email" value={email}
-          onChange={(e) => setEmail(e.target.value)}/>
+          onChange={(e) => setEmail(e.target.value)} size="lg" style={{ width: '80%' }}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label><h4>Password</h4></Form.Label>
         <Form.Control type="password" placeholder="Enter Password" value={password}
-          onChange={(e) => setPassword(e.target.value)}/>
+          onChange={(e) => setPassword(e.target.value)} size="lg" style={{ width: '80%' }}/>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" size="lg" style={{ width: '80%' }}>
         Submit
       </Button>
     </Form>
