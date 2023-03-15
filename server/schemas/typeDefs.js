@@ -24,6 +24,7 @@ const typeDefs = gql`
     user(username: String!): User
     me: User
     thoughts: [Thought]
+    thought(thoughtId: ID!): Thought
   }
   type Mutation {
     addThought(location: String!, departure: String!): Thought

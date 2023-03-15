@@ -13,6 +13,9 @@ const resolvers = {
       thoughts: async (parents, { username }) => {
         return Thought.find({})
       },
+      thought: async (parent, { thoughtId }) => {
+        return User.findOne(Thought)
+      },
       me: async (parent, recs, context) => {
         if (context.user) {
           return User.findOne({ _id: context.user._id }).populate('thoughts');
@@ -48,15 +51,12 @@ const resolvers = {
         const token = signToken(user);
   
         return { token, user };
-      },   
-      
+      }, 
       removeThought: async (parent, { thoughtId }, context) => {
         if (context.user) {
           const thought = await Thought.findOneAndDelete({
             _id: thoughtId,
-            thoughtAuthor: context.user.username,
           });
-
           await User.findOneAndUpdate(
             { _id: context.user._id },
             { $pull: { thoughts: thought._id } }
@@ -73,6 +73,7 @@ const resolvers = {
           { $set: { location, departure } },
           { new: true }
         );
+        await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
         return thought;
       }
       throw new AuthenticationError('You need to be logged in!');
