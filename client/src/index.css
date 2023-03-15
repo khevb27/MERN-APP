@@ -25,3 +25,14 @@ body {
 .AlignCenter{
   align-items: center;
 }
+
+/* forms */
+.login {
+  padding-left: 16%;
+}
+
+.title {
+  text-align: center;
+  padding-right: 20%;
+}
+
