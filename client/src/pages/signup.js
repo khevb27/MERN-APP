@@ -2,9 +2,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, {useState} from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 
-import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 
 function BasicExample() {
   const [username, setUser] = useState("");

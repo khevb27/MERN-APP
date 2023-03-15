@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import '../../index.css'; // Import the CSS file for styling
+import '../index.css'; // Import the CSS file for styling
 
 function HomePage() {
   return (
