@@ -25,6 +25,7 @@ function VacayForm() {
       console.error(e);
     }
   };
+  
     return (
     <Form className="col-8 mx-auto m-4" onSubmit={handleSignupSubmit}>
     <h1>Enter Date and Locations</h1>

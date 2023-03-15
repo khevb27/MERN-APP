@@ -7,7 +7,7 @@ function Grid() {
         {/* //size and spacing of the cards row of two default based on bootstrap react */}
         
       <Row xs={1} md={1} className="g-4">
-          <h1>testrooni</h1>
+          <h1>Your Vacations and Dates</h1>
           <VacayCard/>
       </Row>
       </div>

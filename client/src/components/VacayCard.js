@@ -3,22 +3,22 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useQuery } from '@apollo/client';
-import { GET_USER_DATA } from '../utils/mutations';
+import { ME } from '../utils/queries';
 
-function vacayCard(data) {
-    const [user, { error, data }] = useQuery(GET_USER_DATA);
-    
+function VacayCard(props) {
+    const {data} = useQuery(ME);
+    //question marks as optional chaining only if previous value is undefined dont continue to avoid error 
+    const user =  data?.me || {}; 
+    console.log(user);
     return (
-        data.projects.map(projectItem => (
-        <Col>
+        user.thoughts?.map(items => (
+        <Col className="mx-auto m-3" lg="8">
             <Card>
-            <Card.Img variant="top" src={projectItem.src} />
             <Card.Body>
-                <Card.Title>title</Card.Title>
-                <Card.Text > 
-                <Button variant="success" className="m-2" href=''>GitHub</Button> 
-                <Button  variant="success" href=''>Deployment</Button> 
-                </Card.Text>
+                <Card.Title>{items.location}</Card.Title>
+                <Card.Text >{items.departure}</Card.Text>
+                <Button className='m-3' variant="primary">Edit</Button>
+                <Button className='m-3' variant="danger">Delete</Button>
             </Card.Body>
             </Card>
         </Col>
@@ -26,4 +26,4 @@ function vacayCard(data) {
     );
 }   
 
-export default vacayCard;
+export default VacayCard;

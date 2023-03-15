@@ -13,7 +13,7 @@ const resolvers = {
       thoughts: async (parents, { username }) => {
         return Thought.find({})
       },
-      me: async (parent, context) => {
+      me: async (parent, recs, context) => {
         if (context.user) {
           return User.findOne({ _id: context.user._id }).populate('thoughts');
         }
@@ -24,7 +24,7 @@ const resolvers = {
       addThought: async (parent, { location , departure}, context) => {
         const thought = await Thought.create({ location, departure})
         console.log( thought)
-        const user = await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
+        await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
         return thought; 
       },
       addUser: async (parent, { username, email, password }) => {
