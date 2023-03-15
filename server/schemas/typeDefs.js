@@ -30,6 +30,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
     removeThought(thoughtId: ID!): Thought
+    updateThought(thoughtId: ID!, location: String, departure: String): Thought
   }
 `;
 

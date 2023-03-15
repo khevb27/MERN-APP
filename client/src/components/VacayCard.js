@@ -32,8 +32,7 @@ function VacayCard() {
             <Card.Body>
                 <Card.Title>{items.location}</Card.Title>
                 <Card.Text >{items.departure}</Card.Text>
-                <Card.Text itemID={items._id}>key={items._id}</Card.Text>
-                <Button className='m-1' variant="primary">Edit</Button>
+                <Button  href="/editCard" className='m-1' variant="primary">Edit</Button>
                 <Button onClick={() =>handleDelete(items._id)} className='m-1' variant="danger">Delete</Button>
             </Card.Body>
             </Card>

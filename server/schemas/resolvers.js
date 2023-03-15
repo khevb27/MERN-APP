@@ -49,21 +49,30 @@ const resolvers = {
   
         return { token, user };
       },   
-    //   removeThought: async (parent, { thoughtId }, context) => {
-    //     return Thought.findOneAndDelete({ _id: thoughtId });
-    // },
-    removeThought: async (parent, { thoughtId }, context) => {
+      
+      removeThought: async (parent, { thoughtId }, context) => {
+        if (context.user) {
+          const thought = await Thought.findOneAndDelete({
+            _id: thoughtId,
+            thoughtAuthor: context.user.username,
+          });
+
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { thoughts: thought._id } }
+          );
+
+          return thought;
+        }
+        throw new AuthenticationError('You need to be logged in!');
+      },
+      updateThought: async (parent, { thoughtId, location,departure  }, context) => {
       if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
-        });
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+        const thought = await Thought.findOneAndUpdate(
+          { _id: thoughtId },
+          { $set: { location, departure } },
+          { new: true }
         );
-
         return thought;
       }
       throw new AuthenticationError('You need to be logged in!');
