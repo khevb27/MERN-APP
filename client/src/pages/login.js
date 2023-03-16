@@ -1,5 +1,5 @@
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -68,6 +68,7 @@ function BasicExample() {
       >
         Login
       </Button>
+       <h4 className="mt-4">Don't have an account? <Link to="/signup" className='link'>Sign up here</Link>!</h4>
     </Form>
   );
 }
