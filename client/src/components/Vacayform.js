@@ -18,13 +18,13 @@ function VacayForm() {
         const { data } = await addThought({
           variables:
           { location: location, departure: departure },
-          
-        });
+        });window.location.reload(false);
     } catch (e) {
       alert("Invalid Entry");
       console.error(e);
     }
   };
+  
     return (
     <Form className="col-8 mx-auto m-4" onSubmit={handleSignupSubmit}>
     <h1>Enter Date and Locations</h1>
@@ -34,7 +34,7 @@ function VacayForm() {
     </Form.Group>
     <Form.Group className="mb-3">
         <Form.Label><h2>Date</h2></Form.Label>
-        <Form.Control type="text" placeholder="Enter Days to " value={departure} onChange={(e) => setDeparture(e.target.value)} size="lg"/>
+        <Form.Control type="date" placeholder="Enter Days to " value={departure} onChange={(e) => setDeparture(e.target.value)}  size="lg"/>
     </Form.Group>
     <Button variant="primary" type="submit" size="lg" style={{ width: '100%' }}>
         Submit

@@ -2,13 +2,15 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import '../index.css'; // Import the CSS file for styling
 import Auth from '../utils/auth';
-import Vacay from '../components/Vacayform';
+import VacayForm from '../components/Vacayform';
+import VacayGrid from '../components/VacayGrid'
 function HomePage() {
   if (Auth.loggedIn()) {
     return (
       <>
         <div className="text-center"> {/* Center the header */}
-          <Vacay />
+          <VacayForm />
+          <VacayGrid />
         </div>
       </>
     );

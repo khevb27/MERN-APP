@@ -13,7 +13,10 @@ const resolvers = {
       thoughts: async (parents, { username }) => {
         return Thought.find({})
       },
-      me: async (parent, context) => {
+      thought: async (parent, { thoughtId }) => {
+        return User.findOne(Thought)
+      },
+      me: async (parent, recs, context) => {
         if (context.user) {
           return User.findOne({ _id: context.user._id }).populate('thoughts');
         }
@@ -24,7 +27,7 @@ const resolvers = {
       addThought: async (parent, { location , departure}, context) => {
         const thought = await Thought.create({ location, departure})
         console.log( thought)
-        const user = await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
+        await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
         return thought; 
       },
       addUser: async (parent, { username, email, password }) => {
@@ -48,8 +51,34 @@ const resolvers = {
         const token = signToken(user);
   
         return { token, user };
-      },    
+      }, 
+      removeThought: async (parent, { thoughtId }, context) => {
+        if (context.user) {
+          const thought = await Thought.findOneAndDelete({
+            _id: thoughtId,
+          });
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { thoughts: thought._id } }
+          );
+
+          return thought;
+        }
+        throw new AuthenticationError('You need to be logged in!');
+      },
+      updateThought: async (parent, { thoughtId, location,departure  }, context) => {
+      if (context.user) {
+        const thought = await Thought.findOneAndUpdate(
+          { _id: thoughtId },
+          { $set: { location, departure } },
+          { new: true }
+        );
+        await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { thoughts: thought._id}})
+        return thought;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
+}
 };
 
 module.exports = resolvers;
