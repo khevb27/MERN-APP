@@ -92,5 +92,17 @@ input {
 
 .card-text {
   color: #cfddd3 !important;
+}
 
+.link {
+  color: #cfddd3 !important;
+  border-color: rgba(25, 92, 68, 1) !important;
+}
+
+.link:hover {
+  color: #154e3a !important;
+}
+
+.link:active {
+  color: #cfddd3 !important;
 }
