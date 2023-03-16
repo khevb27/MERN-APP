@@ -1,8 +1,7 @@
-import Nav from 'react-bootstrap/Nav';
-import "../App.css"
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Auth from '../utils/auth';
+import { Nav, Navbar, Container } from "react-bootstrap";
+import "../App.css";
+import Auth from "../utils/auth";
+import myTrips from "../assets/images/MyTrips Logo 2.png";
 function NavBar() {
   const logout = (event) => {
     event.preventDefault();
@@ -10,33 +9,57 @@ function NavBar() {
   };
   if (Auth.loggedIn()) {
     return (
-      <Navbar bg="success" expand="lg" className="justify-content-center" style={{ width: "100%", fontSize: "20px" }}> {/* Make the navbar inline */}
-      <Container>
-      <Navbar.Brand href="/">Home</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="navbar-nav">
-            <Nav.Link onClick={logout}>Logout</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+      <Navbar
+        expand="lg"
+        className="nav justify-content-center"
+        style={{ width: "100%", fontSize: "20px" }}
+      >
+        {" "}
+        {/* Make the navbar inline */}
+        <Container>
+          <Navbar.Brand className="nav-text" href="/">
+            Home
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <img className="mx-auto navbar-center" src={myTrips} width="14%" />
+            <Nav className="navbar-nav ms-auto">
+              <Nav.Link className="nav-text" onClick={logout}>
+                Logout
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
-    </Navbar>
-    )}
-  else{
+      </Navbar>
+    );
+  } else {
     return (
-      <Navbar bg="success" expand="lg" className="justify-content-center" style={{ width: "100%", fontSize: "20px" }}> {/* Make the navbar inline */}
-      <Container>
-        <Navbar.Brand href="/">Home</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="navbar-nav">
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-      );
+      <Navbar
+        expand="lg"
+        className="nav justify-content-center"
+        style={{ width: "100%", fontSize: "20px" }}
+      >
+        {" "}
+        {/* Make the navbar inline */}
+        <Container>
+          <Navbar.Brand className="nav-text" href="/">
+            Home
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <img className="mx-auto navbar-center" src={myTrips} width="14%" />
+            <Nav className="navbar-nav ms-auto">
+              <Nav.Link className="nav-text" href="/login">
+                Login
+              </Nav.Link>
+              <Nav.Link className="nav-text" href="/signup">
+                Sign Up
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    );
   }
 }
 export default NavBar;
